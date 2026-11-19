@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Cristina! | Celebrando a una Gran Enfermera</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        med: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            900: '#134e4a',
+                        },
+                        skysoft: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                        },
+                        coral: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                        },
+                        gold: {
+                            100: '#fef3c7',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        /* Relleno desenfocado que completa todo el ancho con brillo moderado */
+        .bg-blur-fill {
+            position: fixed;
+            inset: -24px;
+            background-image: url('Captura de pantalla 2026-11-18 205747.png');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: blur(18px) saturate(1.1) brightness(0.72);
+            transform: scale(1.06);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Foto completa en el centro con brillo ligeramente atenuado para facilitar lectura */
+        .bg-sharp-full {
+            position: fixed;
+            inset: 0;
+            background-image: url('Captura de pantalla 2026-11-18 205747.png');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: brightness(0.82);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Partículas flotantes de fondo */
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.55;
+            }
+            85% {
+                opacity: 0.55;
+            }
+            100% {
+                transform: translateY(-15vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .floating-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatParticle linear infinite;
+        }
+
+        /* Animación de la llama de la vela */
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+            25% { transform: scale(1.06, 0.96) rotate(2deg); opacity: 0.92; }
+            50% { transform: scale(0.95, 1.05) rotate(-1deg); opacity: 1; }
+            75% { transform: scale(1.03, 0.98) rotate(3deg); opacity: 0.95; }
+        }
+
+        .candle-flame {
+            transform-origin: bottom center;
+            animation: flicker 1.4s infinite ease-in-out;
+            transition: all 0.4s ease;
+        }
+
+        .candle-flame.extinguished {
+            transform: scale(0);
+            opacity: 0;
+            animation: none;
+        }
+
+        /* Animación de humo al apagar velas */
+        @keyframes smokeRise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-35px) translateX(8px) scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .smoke-puff {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .smoke-puff.active {
+            animation: smokeRise 1.8s ease-out forwards;
+        }
+
+        /* Animación del sello médico Rx */
+        @keyframes stampImpact {
+            0% {
+                transform: scale(2.8) rotate(-22deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(0.92) rotate(-12deg);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1.04) rotate(-14deg);
+            }
+            100% {
+                transform: scale(1) rotate(-13deg);
+                opacity: 0.92;
+            }
+        }
+
+        .rx-stamp-animate {
+            animation: stampImpact 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Pulso suave en iconos */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.22); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.18); }
+            70% { transform: scale(1); }
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* Estilo papel receta médica */
+        .rx-paper {
+            background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-med-200 selection:text-med-900">
+
+    <!-- Capas de fondo: desenfoque completo + foto nítida completa -->
+    <div class="bg-blur-fill" aria-hidden="true"></div>
+    <div class="bg-sharp-full" aria-hidden="true"></div>
+
+    <!-- Canvas global para explosiones de confeti -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 w-full h-full"></canvas>
+
+    <!-- Contenedor de partículas flotantes de fondo -->
+    <div id="floating-bg" aria-hidden="true"></div>
+
+    <!-- Barra superior flotante con control de sonido -->
+    <nav class="sticky top-0 z-40 backdrop-blur-md bg-white/85 border-b border-med-100 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-med-500 to-skysoft-500 text-white flex items-center justify-center shadow-sm">
+                    <!-- Icono Cruz Médica + Corazón -->
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </span>
+                <div>
+                    <span class="font-bold text-slate-800 tracking-tight text-sm sm:text-base block leading-none">Edición Especial</span>
+                    <span class="text-xs text-med-600 font-medium">Turno de Celebración • 24/7</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="toggle-audio-btn" type="button" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-coral-50 text-coral-500 border border-coral-200 hover:bg-coral-100 transition-all shadow-sm active:scale-95">
+                    <span id="audio-icon">🔇</span>
+                    <span id="audio-label" class="hidden sm:inline">Melodía Cumpleaños</span>
+                </button>
+                <button id="hero-confetti-btn" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-med-500 to-skysoft-500 text-white hover:opacity-95 transition-all shadow-sm active:scale-95">
+                    <span>🎉</span>
+                    <span>Celebrar</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN 1: HERO / ENCABEZADO PRINCIPAL -->
+    <header class="relative z-10 pt-10 pb-14 sm:pt-16 sm:pb-20 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Insignia superior -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-gold-400/50 shadow-sm mb-6">
+                <span class="w-2.5 h-2.5 rounded-full bg-coral-500 animate-ping"></span>
+                <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-700">
+                    Diagnóstico Oficial: ¡Hoy es tu día!
+                </span>
+            </div>
+
+            <!-- Ilustración central: Estetoscopio formando un corazón dorado/turquesa -->
+            <div class="mx-auto w-24 h-24 sm:w-28 sm:h-28 mb-6 rounded-3xl bg-white/95 shadow-lg shadow-med-500/10 border border-med-100 flex items-center justify-center relative group">
+                <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gold-400 text-white flex items-center justify-center text-sm shadow-md transform rotate-12">
+                    ✨
+                </div>
+                <svg class="w-14 h-14 sm:w-16 sm:h-16 text-med-600 animate-heartbeat" viewBox="0 0 64 64" fill="none">
+                    <!-- Estetoscopio estilizado -->
+                    <path d="M18 12V24C18 31.732 24.268 38 32 38C39.732 38 46 31.732 46 24V12" stroke="#0d9488" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M14 12H22" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M42 12H50" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M32 38V46C32 51.5228 36.4772 56 42 56C47.5228 56 52 51.5228 52 46V39" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="52" cy="35" r="5" fill="#f43f5e" stroke="#ffffff" stroke-width="2"/>
+                </svg>
+            </div>
+
+            <!-- Título principal con respaldo suave para lectura clara -->
+            <div class="inline-block bg-white/85 backdrop-blur-sm px-6 py-4 rounded-3xl shadow-md mb-5">
+                <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-slate-900 tracking-tight leading-tight">
+                    ¡Feliz Cumpleaños, <span class="text-transparent bg-clip-text bg-gradient-to-r from-med-600 via-skysoft-600 to-coral-500">Cristina</span>!
+                </h1>
+            </div>
+
+            <!-- Subtítulo con respaldo suave para lectura clara -->
+            <div class="max-w-2xl mx-auto bg-white/85 backdrop-blur-sm px-5 py-3.5 rounded-2xl shadow-sm mb-8">
+                <p class="text-lg sm:text-2xl text-slate-800 font-semibold leading-relaxed">
+                    Celebrando la vida de una <span class="text-med-700 font-bold underline decoration-gold-400 decoration-2 underline-offset-4">gran enfermera</span>, cuya vocación sana cuerpos y cuya bondad ilumina corazones.
+                </p>
+            </div>
+
+            <!-- Botones de acción rápida -->
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                <a href="#signos-vitales" class="px-6 py-3.5 rounded-2xl bg-med-600 text-white font-semibold shadow-lg shadow-med-600/20 hover:bg-med-700 transition-all active:scale-95 text-sm sm:text-base">
+                    🩺 Ver Signos Vitales
+                </a>
+                <a href="#pastel-cumple" class="px-6 py-3.5 rounded-2xl bg-white text-slate-700 border border-slate-200 font-semibold shadow-sm hover:border-coral-300 hover:text-coral-600 transition-all active:scale-95 text-sm sm:text-base">
+                    🎂 Soplar las Velas
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 space-y-16 sm:space-y-24 pb-24">
+
+        <!-- SECCIÓN 2: SIGNOS VITALES DE CUMPLEAÑOS (MONITOR ECG) -->
+        <section id="signos-vitales" class="scroll-mt-24">
+            <div class="bg-slate-900 rounded-3xl p-5 sm:p-8 shadow-2xl border-4 border-slate-800 text-white relative overflow-hidden">
+                <!-- Brillo decorativo superior -->
+                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-med-500 via-emerald-400 to-skysoft-500"></div>
+
+                <!-- Cabecera del Monitor Médico -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                    <div>
+                        <div class="flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Monitor Multiparámetro • Paciente: Cristina
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                            Signos Vitales de Cumpleaños
+                        </h2>
+                    </div>
+
+                    <button id="pulse-btn" type="button" class="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm sm:text-base transition-all shadow-lg shadow-emerald-500/25 active:scale-95 cursor-pointer">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span>Tomar el pulso</span>
+                    </button>
+                </div>
+
+                <!-- Pantalla Canvas ECG -->
+                <div class="mt-6 bg-slate-950/90 rounded-2xl border border-slate-800 p-3 sm:p-4 relative">
+                    <div class="flex justify-between items-center text-xs font-mono text-slate-400 mb-2 px-1">
+                        <span>ECG DERIVACIÓN II • VELOCIDAD: <span id="ecg-speed-label" class="text-emerald-400 font-bold">NORMAL (75 LPM)</span></span>
+                        <span id="ecg-status-badge" class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">SINUSAL FESTIVO</span>
+                    </div>
+                    <div class="w-full h-36 sm:h-44 relative">
+                        <canvas id="ecg-canvas" class="w-full h-full block rounded-xl"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de Métricas Vitales -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                    <!-- Métrica 1 -->
+                    <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 hover:border-emerald-500/50 transition-colors">
+                        <div class="flex items-center justify-between text-emerald-400 text-xs font-mono mb-2">
+                            <span>FC / RITMO CARDÍACO</span>
+                            <span>♥ BPM</span>
+                        </div>
+                        <div id="bpm-display" class="text-3xl font-extrabold text-emerald-400 font-mono mb-1">100%</div>
+                        <div class="text-sm font-semibold text-slate-200">100% Alegría</div>
+                    </div>
+
+                    <!-- Métrica 2 -->
+                    <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 hover:border-skysoft-500/50 transition-colors">
+                        <div class="flex items-center justify-between text-skysoft-400 text-xs font-mono mb-2">
+                            <span>PA / PRESIÓN ARTERIAL</span>
+                            <span>mmHg</span>
+                        </div>
+                        <div class="text-3xl font-extrabold text-skysoft-400 font-mono mb-1">120/80</div>
+                        <div class="text-sm font-semibold text-slate-200">Estable y llena de amor</div>
+                    </div>
+
+                    <!-- Métrica 3 -->
+                    <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 hover:border-gold-400/50 transition-colors">
+                        <div class="flex items-center justify-between text-gold-400 text-xs font-mono mb-2">
+                            <span>SpO₂ / ENERGÍA</span>
+                            <span>% SAT</span>
+                        </div>
+                        <div class="text-3xl font-extrabold text-gold-400 font-mono mb-1">100%</div>
+                        <div class="text-sm font-semibold text-slate-200">Listo para festejar</div>
+                    </div>
+
+                    <!-- Métrica 4 -->
+                    <div class="bg-slate-800/70 border border-slate-700/80 rounded-2xl p-4 hover:border-coral-400/50 transition-colors">
+                        <div class="flex items-center justify-between text-coral-400 text-xs font-mono mb-2">
+                            <span>DX / DIAGNÓSTICO</span>
+                            <span>CIE-10</span>
+                        </div>
+                        <div class="text-xl font-extrabold text-coral-400 mt-1 mb-1 leading-snug">¡Un año más increíble!</div>
+                        <div class="text-xs text-slate-400">Pronóstico: Éxito rotundo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: RECETA MÉDICA DE FELICIDAD (Rx) -->
+        <section id="receta-medica" class="scroll-mt-24">
+            <div class="max-w-3xl mx-auto bg-white rx-paper rounded-3xl shadow-xl border-2 border-skysoft-200 overflow-hidden relative">
+                <!-- Franja superior médica -->
+                <div class="bg-gradient-to-r from-med-600 to-skysoft-600 px-6 sm:px-10 py-5 text-white flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center font-serif text-2xl font-bold">
+                            Rx
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Receta Médica de Felicidad</h2>
+                            <p class="text-xs sm:text-sm text-med-100">Departamento de Bienestar, Gratitud y Celebración</p>
+                        </div>
+                    </div>
+                    <div class="text-right text-xs font-mono bg-white/15 px-3 py-1.5 rounded-xl">
+                        <div>FOLIO: #CRISTINA-2026</div>
+                        <div id="rx-date"></div>
+                    </div>
+                </div>
+
+                <!-- Datos del paciente -->
+                <div class="p-6 sm:p-10 relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-6 mb-6 border-b border-dashed border-slate-300 text-sm">
+                        <div>
+                            <span class="text-slate-400 font-semibold uppercase text-xs block">Paciente Especial:</span>
+                            <span class="text-lg font-bold text-slate-800">Enf. Cristina</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 font-semibold uppercase text-xs block">Indicación Clínica:</span>
+                            <span class="text-base font-semibold text-med-700">Celebración Obligatoria de Cumpleaños</span>
+                        </div>
+                    </div>
+
+                    <!-- Lista de prescripciones -->
+                    <div class="space-y-4 mb-8">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Prescripción / Tratamiento Indicado:</h3>
+                        
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-med-50/80 border border-med-100">
+                            <span class="w-7 h-7 rounded-full bg-med-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Abrazos sinceros y cariño incondicional (1000 mg)</p>
+                                <p class="text-xs sm:text-sm text-slate-600">Administrar cada 8 horas, aumentando la dosis en reuniones con familia y amigos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-skysoft-50/80 border border-skysoft-100">
+                            <span class="w-7 h-7 rounded-full bg-skysoft-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Sueños cumplidos y metas alcanzadas (Dosis máxima)</p>
+                                <p class="text-xs sm:text-sm text-slate-600">Vía directa al corazón durante los próximos 365 días del año.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-gold-100/50 border border-gold-400/30">
+                            <span class="w-7 h-7 rounded-full bg-gold-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Éxito profesional y orgullo vocacional (Uso continuo)</p>
+                                <p class="text-xs sm:text-sm text-slate-600">Refuerzo diario para seguir brillando en cada guardia y en cada vida que cuidas.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-coral-50/80 border border-coral-100">
+                            <span class="w-7 h-7 rounded-full bg-coral-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+                            <div>
+                                <p class="font-bold text-slate-800">Risas sin medida + Descanso merecido (Libre demanda)</p>
+                                <p class="text-xs sm:text-sm text-slate-600">Sin contraindicaciones. Suspender cualquier estrés o preocupación de inmediato.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sello oficial animado (oculto hasta hacer clic) -->
+                    <div id="rx-stamp" class="hidden pointer-events-none sm:absolute sm:right-10 sm:bottom-24 my-4 sm:my-0 mx-auto w-56 border-4 border-med-600 text-med-700 rounded-2xl p-3 text-center bg-white/90 shadow-md select-none">
+                        <div class="text-[10px] font-mono font-bold tracking-widest uppercase border-b border-med-300 pb-1">Certificación Oficial</div>
+                        <div class="text-lg font-black tracking-tight leading-tight my-1 text-med-600">APROBADO Y RECETADO</div>
+                        <div class="text-[11px] font-semibold text-slate-600">Válido por todo este nuevo año</div>
+                    </div>
+
+                    <!-- Pie de receta: Firma y botón de sellado -->
+                    <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div class="text-center sm:text-left">
+                            <p class="font-serif italic text-xl text-slate-700">La Vida y tus Amigos</p>
+                            <div class="w-48 h-px bg-slate-400 my-1 mx-auto sm:mx-0"></div>
+                            <p class="text-xs text-slate-500 font-medium">Firma Autorizada • Junta Médica del Cariño</p>
+                        </div>
+
+                        <button id="stamp-btn" type="button" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-med-600 to-skysoft-600 hover:from-med-700 hover:to-skysoft-700 text-white font-bold shadow-lg shadow-med-600/20 transition-all active:scale-95 cursor-pointer">
+                            <span>🩺</span>
+                            <span id="stamp-btn-text">Sellar / Aplicar Dosis</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: DEDICATORIA / CARTA ABIERTA PERSONALIZABLE -->
+        <section id="dedicatoria" class="scroll-mt-24">
+            <div class="max-w-3xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl p-6 sm:p-12 shadow-xl border border-coral-100 relative">
+                <!-- Adorno superior de carta -->
+                <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+                    <div class="inline-flex items-center gap-2 text-coral-500 font-bold text-sm">
+                        <span>💌</span>
+                        <span>Carta Abierta para Ti</span>
+                    </div>
+
+                    <button id="edit-letter-btn" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer">
+                        <span id="edit-icon">✏️</span>
+                        <span id="edit-label">Personalizar mensaje</span>
+                    </button>
+                </div>
+
+                <h2 class="font-serif text-2xl sm:text-4xl font-bold text-slate-900 mb-6">
+                    Querida Cristina,
+                </h2>
+
+                <!-- Cuerpo editable de la carta -->
+                <div id="letter-content" class="space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed outline-none rounded-2xl transition-all">
+                    <p>
+                        Hoy se celebra mucho más que un año más de vida: Se celebra la admiración por la mujer y profesional que eres.
+                    </p>
+                    <p>
+                        Ser enfermera requiere una combinación única de ciencia, valentía, paciencia y un corazón inmenso. Cada día entregas tu vocación, tu empatía y tu calidez humana para aliviar, acompañar y cuidar a quienes más lo necesitan, incluso en los turnos más exigentes.
+                    </p>
+                    <p>
+                        En este cumpleaños quiero recordarte que quien tanto cuida a los demás también merece ser cuidada, consentida y celebrada en grande. Que la vida te devuelva multiplicado todo el amor, la esperanza y el bienestar que regalas a diario.
+                    </p>
+                    <p class="font-semibold text-med-800">
+                        ¡Feliz cumpleaños, Cristina! Que nunca te falten motivos para sonreír, sueños por cumplir.
+                    </p>
+                </div>
+
+                <!-- Nota extra personalizable -->
+                <div class="mt-8 pt-6 border-t border-coral-100">
+                    <label for="extra-note" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    </label>
+                    <textarea id="extra-note" rows="2" placeholder=" " class="w-full rounded-2xl bg-coral-50/50 border border-coral-200/80 px-4 py-3 text-sm sm:text-base text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-med-500 focus:bg-white transition-all resize-none"></textarea>
+                    <div id="save-toast" class="hidden mt-2 text-xs font-semibold text-med-600">
+                        ✓ Cambios guardados en esta vista.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: PASTEL DE CUMPLEAÑOS INTERACTIVO -->
+        <section id="pastel-cumple" class="scroll-mt-24">
+            <div class="max-w-2xl mx-auto bg-gradient-to-b from-white to-skysoft-50 rounded-3xl p-6 sm:p-10 shadow-xl border border-med-100 text-center">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-gold-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    Momento del Deseo
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+                    ¡Pide un deseo, Cristina!
+                </h2>
+                <p id="cake-instruction" class="text-slate-600 text-sm sm:text-base mb-8">
+                    Toca las velas o presiona el botón para soplarlas y celebrar tu nuevo año.
+                </p>
+
+                <!-- Ilustración SVG Interactiva del Pastel de Cumpleaños -->
+                <div id="cake-container" class="relative w-64 sm:w-72 mx-auto my-4 cursor-pointer select-none group" title="Haz clic para soplar las velas">
+                    <svg viewBox="0 0 300 260" class="w-full h-auto drop-shadow-md">
+                        <!-- Plato del pastel -->
+                        <ellipse cx="150" cy="238" rx="135" ry="16" fill="#e2e8f0"/>
+                        <ellipse cx="150" cy="234" rx="125" ry="12" fill="#f8fafc"/>
+
+                        <!-- Base inferior del pastel (Turquesa médico suave) -->
+                        <path d="M50 165 L50 222 C50 232 250 232 250 222 L250 165 Z" fill="#14b8a6"/>
+                        <ellipse cx="150" cy="165" rx="100" ry="16" fill="#2dd4bf"/>
+                        <!-- Decoración perlas doradas base -->
+                        <circle cx="70" cy="224" r="4" fill="#fbbf24"/>
+                        <circle cx="95" cy="227" r="4" fill="#fbbf24"/>
+                        <circle cx="122" cy="229" r="4" fill="#fbbf24"/>
+                        <circle cx="150" cy="230" r="4" fill="#fbbf24"/>
+                        <circle cx="178" cy="229" r="4" fill="#fbbf24"/>
+                        <circle cx="205" cy="227" r="4" fill="#fbbf24"/>
+                        <circle cx="230" cy="224" r="4" fill="#fbbf24"/>
+
+                        <!-- Piso superior del pastel (Blanco crema con glaseado coral) -->
+                        <path d="M75 110 L75 162 C75 170 225 170 225 162 L225 110 Z" fill="#ffffff"/>
+                        <ellipse cx="150" cy="110" rx="75" ry="13" fill="#ffe4e6"/>
+                        
+                        <!-- Glaseado derramándose (Coral suave) -->
+                        <path d="M75 110 C75 128 92 132 95 118 C98 136 118 138 122 120 C126 140 146 140 150 122 C154 140 174 140 178 120 C182 138 202 136 205 118 C208 132 225 128 225 110 C225 102 75 102 75 110 Z" fill="#fb7185"/>
+
+                        <!-- Emblema médico de corazón en el centro del pastel -->
+                        <circle cx="150" cy="195" r="16" fill="#ffffff" opacity="0.95"/>
+                        <path d="M147 187 H153 V192 H158 V198 H153 V203 H147 V198 H142 V192 H147 Z" fill="#f43f5e"/>
+
+                        <!-- VELA 1 (Izquierda) -->
+                        <g transform="translate(105, 62)">
+                            <rect x="0" y="15" width="10" height="36" rx="3" fill="#38bdf8"/>
+                            <path d="M0 23 L10 18 M0 33 L10 28 M0 43 L10 38" stroke="#ffffff" stroke-width="2.5"/>
+                            <!-- Mecha -->
+                            <line x1="5" y1="15" x2="5" y2="10" stroke="#475569" stroke-width="2"/>
+                            <!-- Llama -->
+                            <g class="candle-flame">
+                                <path d="M5 -8 C11 0 11 8 5 10 C-1 8 -1 0 5 -8 Z" fill="#f59e0b"/>
+                                <path d="M5 -3 C8 2 8 7 5 8 C2 7 2 2 5 -3 Z" fill="#fef08a"/>
+                            </g>
+                            <!-- Humo -->
+                            <circle class="smoke-puff" cx="5" cy="4" r="4" fill="#94a3b8"/>
+                        </g>
+
+                        <!-- VELA 2 (Centro - Más alta) -->
+                        <g transform="translate(145, 52)">
+                            <rect x="0" y="15" width="10" height="44" rx="3" fill="#fbbf24"/>
+                            <path d="M0 24 L10 19 M0 35 L10 30 M0 46 L10 41" stroke="#ffffff" stroke-width="2.5"/>
+                            <!-- Mecha -->
+                            <line x1="5" y1="15" x2="5" y2="10" stroke="#475569" stroke-width="2"/>
+                            <!-- Llama -->
+                            <g class="candle-flame">
+                                <path d="M5 -10 C12 -1 12 8 5 10 C-2 8 -2 -1 5 -10 Z" fill="#f43f5e"/>
+                                <path d="M5 -4 C8.5 1 8.5 7 5 8 C1.5 7 1.5 1 5 -4 Z" fill="#fef08a"/>
+                            </g>
+                            <!-- Humo -->
+                            <circle class="smoke-puff" cx="5" cy="4" r="4" fill="#94a3b8"/>
+                        </g>
+
+                        <!-- VELA 3 (Derecha) -->
+                        <g transform="translate(185, 62)">
+                            <rect x="0" y="15" width="10" height="36" rx="3" fill="#2dd4bf"/>
+                            <path d="M0 23 L10 18 M0 33 L10 28 M0 43 L10 38" stroke="#ffffff" stroke-width="2.5"/>
+                            <!-- Mecha -->
+                            <line x1="5" y1="15" x2="5" y2="10" stroke="#475569" stroke-width="2"/>
+                            <!-- Llama -->
+                            <g class="candle-flame">
+                                <path d="M5 -8 C11 0 11 8 5 10 C-1 8 -1 0 5 -8 Z" fill="#f59e0b"/>
+                                <path d="M5 -3 C8 2 8 7 5 8 C2 7 2 2 5 -3 Z" fill="#fef08a"/>
+                            </g>
+                            <!-- Humo -->
+                            <circle class="smoke-puff" cx="5" cy="4" r="4" fill="#94a3b8"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Mensaje tras soplar las velas -->
+                <div id="wish-message" class="hidden mt-4 p-4 rounded-2xl bg-med-50 border border-med-200 text-med-800 font-semibold text-sm sm:text-base">
+                    🎉 ¡Que todos tus deseos se cumplan, Cristina! Gracias por cuidar y alegrar tantas vidas.
+                </div>
+
+                <!-- Botones pastel -->
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+                    <button id="blow-candles-btn" type="button" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-coral-500 to-gold-500 hover:opacity-95 text-white font-bold shadow-lg shadow-coral-500/20 transition-all active:scale-95 cursor-pointer">
+                        🌬️ Soplar las Velas
+                    </button>
+                    <button id="relight-candles-btn" type="button" class="hidden px-5 py-3.5 rounded-2xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all active:scale-95 cursor-pointer">
+                        🕯️ Encender de nuevo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="relative z-10 border-t border-med-100 bg-white/85 backdrop-blur-sm py-8 px-4 text-center">
+        <p class="text-sm font-semibold text-slate-700">
+            Hecho con cariño y admiración para <span class="text-med-700">Cristina</span> • ¡Feliz Cumpleaños!
+        </p>
+        <p class="text-xs text-slate-400 mt-1">
+            Vocación que sana • Corazón que inspira
+        </p>
+    </footer>
+
+    <script>
+        // Fecha actual en receta médica
+        (function setRxDate() {
+            const el = document.getElementById('rx-date');
+            if (el) {
+                const now = new Date();
+                el.textContent = 'FECHA: ' + now.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+            }
+        })();
+
+        // Partículas flotantes de fondo
+        (function createFloatingParticles() {
+            const container = document.getElementById('floating-bg');
+            const icons = ['🩺', '❤️', '✨', '🎈', '💊', '🌸', '🎉', '✚'];
+            const count = 18;
+            for (let i = 0; i < count; i++) {
+                const span = document.createElement('span');
+                span.className = 'floating-item text-lg sm:text-2xl select-none';
+                span.textContent = icons[i % icons.length];
+                span.style.left = Math.random() * 100 + 'vw';
+                span.style.animationDuration = (12 + Math.random() * 14) + 's';
+                span.style.animationDelay = (-Math.random() * 18) + 's';
+                container.appendChild(span);
+            }
+        })();
+
+        // Sistema de confeti en Canvas
+        const confettiCanvas = document.getElementById('confetti-canvas');
+        const confettiCtx = confettiCanvas.getContext('2d');
+        let confettiParticles = [];
+        let confettiAnimating = false;
+
+        function resizeConfetti() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeConfetti);
+        resizeConfetti();
+
+        function launchConfetti(amount = 90) {
+            const colors = ['#14b8a6', '#0ea5e9', '#f43f5e', '#fbbf24', '#34d399', '#fb7185'];
+            for (let i = 0; i < amount; i++) {
+                confettiParticles.push({
+                    x: Math.random() * confettiCanvas.width,
+                    y: -20 - Math.random() * 80,
+                    w: 6 + Math.random() * 8,
+                    h: 4 + Math.random() * 6,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: 2 + Math.random() * 4.5,
+                    angle: Math.random() * Math.PI * 2,
+                    vAngle: (Math.random() - 0.5) * 0.2
+                });
+            }
+            if (!confettiAnimating) {
+                confettiAnimating = true;
+                requestAnimationFrame(updateConfetti);
+            }
+        }
+
+        function updateConfetti() {
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiParticles.forEach((p) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.angle += p.vAngle;
+                confettiCtx.save();
+                confettiCtx.translate(p.x, p.y);
+                confettiCtx.rotate(p.angle);
+                confettiCtx.fillStyle = p.color;
+                confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                confettiCtx.restore();
+            });
+            confettiParticles = confettiParticles.filter((p) => p.y < confettiCanvas.height + 30);
+            if (confettiParticles.length > 0) {
+                requestAnimationFrame(updateConfetti);
+            } else {
+                confettiAnimating = false;
+            }
+        }
+
+        document.getElementById('hero-confetti-btn').addEventListener('click', () => launchConfetti(110));
+
+        // Melodía Cumpleaños con Web Audio API
+        let audioCtx = null;
+        let isPlayingMelody = false;
+        let melodyTimeout = null;
+
+        function playBirthdayMelody() {
+            if (isPlayingMelody) {
+                stopMelody();
+                return;
+            }
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!audioCtx) audioCtx = new AudioContextClass();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            isPlayingMelody = true;
+            document.getElementById('audio-icon').textContent = '🔊';
+            document.getElementById('audio-label').textContent = 'Pausar Melodía';
+
+            // Cumpleaños Feliz (frecuencias en Hz y duraciones en segundos)
+            const notes = [
+                [261.63, 0.35], [261.63, 0.2], [293.66, 0.5], [261.63, 0.5], [349.23, 0.5], [329.63, 0.9],
+                [261.63, 0.35], [261.63, 0.2], [293.66, 0.5], [261.63, 0.5], [392.00, 0.5], [349.23, 0.9],
+                [261.63, 0.35], [261.63, 0.2], [523.25, 0.5], [440.00, 0.5], [349.23, 0.5], [329.63, 0.5], [293.66, 0.9],
+                [466.16, 0.35], [466.16, 0.2], [440.00, 0.5], [349.23, 0.5], [392.00, 0.5], [349.23, 1.0]
+            ];
+
+            let idx = 0;
+            function nextNote() {
+                if (!isPlayingMelody) return;
+                if (idx >= notes.length) {
+                    stopMelody();
+                    return;
+                }
+                const [freq, dur] = notes[idx++];
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + dur);
+                melodyTimeout = setTimeout(nextNote, dur * 1000);
+            }
+            nextNote();
+        }
+
+        function stopMelody() {
+            isPlayingMelody = false;
+            clearTimeout(melodyTimeout);
+            document.getElementById('audio-icon').textContent = '🔇';
+            document.getElementById('audio-label').textContent = 'Melodía Cumpleaños';
+        }
+
+        document.getElementById('toggle-audio-btn').addEventListener('click', playBirthdayMelody);
+
+        // Monitor ECG animado en Canvas
+        (function initECG() {
+            const canvas = document.getElementById('ecg-canvas');
+            const ctx = canvas.getContext('2d');
+            const pulseBtn = document.getElementById('pulse-btn');
+            const speedLabel = document.getElementById('ecg-speed-label');
+            const statusBadge = document.getElementById('ecg-status-badge');
+            const bpmDisplay = document.getElementById('bpm-display');
+
+            let excitedMode = false;
+            let x = 0;
+            let lastY = 0;
+
+            function resizeEcg() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+                lastY = canvas.height / 2;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            window.addEventListener('resize', resizeEcg);
+            resizeEcg();
+
+            function ecgWave(phase) {
+                if (phase > 0.1 && phase < 0.2) return -Math.sin((phase - 0.1) * Math.PI * 10) * 6;
+                if (phase >= 0.25 && phase < 0.3) return 8;
+                if (phase >= 0.3 && phase < 0.36) return -34;
+                if (phase >= 0.36 && phase < 0.42) return 14;
+                if (phase >= 0.55 && phase < 0.72) return -Math.sin(((phase - 0.55) / 0.17) * Math.PI) * 10;
+                return 0;
+            }
+
+            let t = 0;
+            function drawEcg() {
+                const midY = canvas.height / 2;
+                const step = excitedMode ? 3.2 : 2.2;
+                t += excitedMode ? 0.022 : 0.014;
+                const phase = t % 1;
+                const ampScale = excitedMode ? 1.25 : 1;
+                const y = midY + ecgWave(phase) * ampScale;
+
+                ctx.clearRect(x, 0, 18, canvas.height);
+
+                ctx.strokeStyle = excitedMode ? '#fb7185' : '#34d399';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(x === 0 ? 0 : x - step, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                lastY = y;
+                x += step;
+                if (x >= canvas.width) {
+                    x = 0;
+                    lastY = midY;
+                }
+                requestAnimationFrame(drawEcg);
+            }
+            drawEcg();
+
+            pulseBtn.addEventListener('click', () => {
+                excitedMode = !excitedMode;
+                if (excitedMode) {
+                    speedLabel.textContent = 'FESTIVO (120 LPM)';
+                    statusBadge.textContent = '¡PULSO DE CELEBRACIÓN!';
+                    bpmDisplay.textContent = '120 LPM';
+                    launchConfetti(80);
+                } else {
+                    speedLabel.textContent = 'NORMAL (75 LPM)';
+                    statusBadge.textContent = 'SINUSAL FESTIVO';
+                    bpmDisplay.textContent = '100%';
+                }
+            });
+        })();
+
+        // Sello de receta médica
+        (function initStamp() {
+            const stampBtn = document.getElementById('stamp-btn');
+            const stampEl = document.getElementById('rx-stamp');
+            const btnText = document.getElementById('stamp-btn-text');
+            let stamped = false;
+
+            stampBtn.addEventListener('click', () => {
+                stamped = !stamped;
+                if (stamped) {
+                    stampEl.classList.remove('hidden');
+                    stampEl.classList.remove('rx-stamp-animate');
+                    void stampEl.offsetWidth;
+                    stampEl.classList.add('rx-stamp-animate');
+                    btnText.textContent = 'Dosis Aplicada ✓';
+                    launchConfetti(60);
+                } else {
+                    stampEl.classList.add('hidden');
+                    btnText.textContent = 'Sellar / Aplicar Dosis';
+                }
+            });
+        })();
+
+        // Editar carta abierta
+        (function initLetterEdit() {
+            const editBtn = document.getElementById('edit-letter-btn');
+            const editLabel = document.getElementById('edit-label');
+            const letterContent = document.getElementById('letter-content');
+            const toast = document.getElementById('save-toast');
+            let editing = false;
+
+            editBtn.addEventListener('click', () => {
+                editing = !editing;
+                letterContent.contentEditable = editing ? 'true' : 'false';
+                if (editing) {
+                    letterContent.classList.add('ring-2', 'ring-med-400', 'p-4', 'bg-med-50/40');
+                    editLabel.textContent = 'Guardar cambios';
+                    letterContent.focus();
+                    toast.classList.add('hidden');
+                } else {
+                    letterContent.classList.remove('ring-2', 'ring-med-400', 'p-4', 'bg-med-50/40');
+                    editLabel.textContent = 'Personalizar mensaje';
+                    toast.classList.remove('hidden');
+                }
+            });
+        })();
+
+        // Pastel interactivo: soplar y encender velas
+        (function initCake() {
+            const flames = document.querySelectorAll('.candle-flame');
+            const smokes = document.querySelectorAll('.smoke-puff');
+            const blowBtn = document.getElementById('blow-candles-btn');
+            const relightBtn = document.getElementById('relight-candles-btn');
+            const wishMsg = document.getElementById('wish-message');
+            const cakeContainer = document.getElementById('cake-container');
+
+            function blowOut() {
+                flames.forEach((f) => f.classList.add('extinguished'));
+                smokes.forEach((s) => {
+                    s.classList.remove('active');
+                    void s.offsetWidth;
+                    s.classList.add('active');
+                });
+                wishMsg.classList.remove('hidden');
+                relightBtn.classList.remove('hidden');
+                launchConfetti(130);
+                if (!isPlayingMelody) playBirthdayMelody();
+            }
+
+            function relight() {
+                flames.forEach((f) => f.classList.remove('extinguished'));
+                smokes.forEach((s) => s.classList.remove('active'));
+                wishMsg.classList.add('hidden');
+                relightBtn.classList.add('hidden');
+            }
+
+            blowBtn.addEventListener('click', blowOut);
+            cakeContainer.addEventListener('click', blowOut);
+            relightBtn.addEventListener('click', relight);
+        })();
+    </script>
+</body>
+</html>
